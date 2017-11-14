@@ -1,0 +1,5 @@
+- create group person
+- create persons belong to this group
+- detect face of person in image and then add this faceId to this person
+- train the person group
+- identify
