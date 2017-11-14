@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSSample</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+    $(function() {   
+		var params = {
+				// Request parameters
+				"targetFace": "{string}",
+			};
+			
+        $.ajax({
+			//persongroups/{personGroupId}/persons/{personId}/persistedFaces?" + $.param(params)
+            url: "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/avatar/persons/722455f7-a20e-403a-91c7-5ea4bc6cc099/persistedFaces?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","f574f6c95c2146ddbdb840520e0a4258");
+            },
+            type: "POST",
+            // Request body
+            data: `{
+						"url":"http://example.com/1.jpg"
+					}`
+        })
+        .done(function(data) {
+            alert("success:" + JSON.stringify(data));
+        })
+        .fail(function(error) {
+            alert("error:"+JSON.stringify(error));
+        });
+		
+		//CuongPhan:{"personId":"722455f7-a20e-403a-91c7-5ea4bc6cc099"}
+		//NguyenLa:{"personId":"46098eb7-0fd5-4121-9983-9012a39a6555"}
+		//ThangNguyen:{"personId":"01417c54-f1e2-44af-8794-97ed6c3ae899"}
+		//CaoPhan:{"personId":"588d5402-c6c6-4e8f-8703-0d59c3f057e0"}
+		//DanhMai:{"personId":"b669391e-80e0-43cb-8a52-55eaa70f6544"}
+		//AnNguyen:{"personId":"79a6b45e-40ba-40f0-946d-bee71a53bcc8"}
+		//VanNguyen:{"personId":"69a9c937-07e1-40be-aadc-44ee1d009d6c"}
+		//AnThuy:{"personId":"b9e46617-cbb9-48a7-b399-22e40e08f33f"}
+    });
+</script>
+</body>
+</html>
